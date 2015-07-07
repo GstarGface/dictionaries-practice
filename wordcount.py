@@ -4,10 +4,10 @@ def wordcount(filename):
     """    
 
     the_file = open(filename)
-
     word_count = {}
     for line in the_file:
-        words = line.rstrip().split(" ")
+        stripped_line = line.rstrip()
+        words = stripped_line.replace(",", "").replace(".", "").replace("?", "").replace("-", " ").replace("_", " ").replace("!", "").replace("'", "").replace('"', "").replace(":", "").replace(";", "").split(" ")
         for word in words:
             if word not in word_count:
                 word_count[word] = 1
